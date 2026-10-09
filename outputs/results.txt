@@ -1,0 +1,40 @@
+Data: Jan 2025 to Sep 2026 (21 months). Trust analysis: 120 trusts with a major ED, Oct 2025 to Sep 2026.
+
+England, September 2026: 74.4% within 4 hours (all types), 60.4% at major EDs; target 82%.
+Gap to target: 7.6 points = about 186,697 more patients a month would need to be seen within 4 hours.
+12h+ waits for a bed, England, September 2026: 50,582.
+Trusts meeting 82% at Type 1 (12 months): 1 of 120.
+Range across trusts: 38.1% to 84.1%.
+
+BETWEEN TRUSTS (latest 12 months, OLS with robust SEs)
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept         50.9431     12.509      4.073      0.000      26.426      75.460
+dta12_per_1000    -0.1127      0.024     -4.684      0.000      -0.160      -0.066
+admit_rate        -0.2694      0.108     -2.497      0.013      -0.481      -0.058
+log_volume         2.2239      1.231      1.806      0.071      -0.189       4.637
+==================================================================================
+R² = 0.25; 5-fold cross-validated R² = 0.14 (range -0.17 to 0.30)
+R² of each factor on its own: dta12_per_1000 0.16, admit_rate 0.08, log_volume 0.05
+
+WITHIN TRUSTS (trust and month fixed effects, SEs clustered by trust)
++10% attendances above the trust's own average: +1.26 points (95% CI +0.48 to +2.03)
++1 SD of 12h bed waits (13.0 per 1,000): -0.66 points (95% CI -1.04 to -0.29)
++1 SD of attendances (6.3% of own average): +0.79 points
+
+BETTER THAN EXPECTED (top 5)
+                                        org_name                   region  pct_4h_t1  expected  vs_expected
+                 George Eliot Hospital NHS Trust                 Midlands       81.2      61.7         19.5
+ West Hertfordshire Teaching Hospitals NHS Trust          East Of England       73.5      55.4         18.0
+Calderdale And Huddersfield NHS Foundation Trust North East And Yorkshire       84.1      67.2         16.9
+     Northumbria Healthcare NHS Foundation Trust North East And Yorkshire       76.9      60.6         16.3
+                Dartford And Gravesham NHS Trust               South East       74.9      59.7         15.2
+
+WORSE THAN EXPECTED (bottom 5)
+                                       org_name                   region  pct_4h_t1  expected  vs_expected
+        University Hospitals Plymouth NHS Trust               South West       38.1      56.4        -18.3
+ North Tees And Hartlepool NHS Foundation Trust North East And Yorkshire       46.2      60.4        -14.2
+      Nottingham University Hospitals NHS Trust                 Midlands       42.8      56.7        -13.9
+                  Somerset NHS Foundation Trust               South West       50.9      63.8        -12.9
+East And North Hertfordshire Teaching NHS Trust          East Of England       49.6      62.5        -12.9
